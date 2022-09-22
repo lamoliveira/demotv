@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="https://seeklogo.com/images/U/UNIMED-logo-C68C2B487E-seeklogo.com.png" type="image/x-icon" />
+    <title>Exemplo de refresh a cada 10 segundos</title>
+   
+   <!-- <meta http-equiv="refresh" content="10">-->
+    <style>
+        body {
+            margin: 0px;
+        }
+        h1 {
+            font-family: arial;
+            font-size: 100%;
+        }
+        iframe {
+            width: 1900px;
+            height: 1000px;
+        }
+        div.top {
+            background-color: rgba(2, 109, 8, 0.83);
+            height: 51px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img src="https://seeklogo.com/images/U/UNIMED-logo-C68C2B487E-seeklogo.com.png" alt="favicon" height="51" width="51">
+        <h1>Exemplo de refresh a cada 10 segundos</h1>
+    </div>
+    <p>-</p>
+    <iframe id="iframe" src="https://demo.tableau.com/t/LuizOliveira/views/demoTV/AcompanhamentodeResultados?:embed=y">
+
+       
+    </iframe>
+
+    <script>
+        window.setInterval(function() {
+            reloadIFrame()
+        }, 30000);
+
+        function reloadIFrame() {
+            console.log('reloading..');
+            document.getElementById('iframe').contentWindow.location.reload();
+        }
+    </script>
+</body>
+</html>
