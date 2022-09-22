@@ -133,23 +133,12 @@ window.addEventListener("load", mediaSizer);
         <h1>Exemplo de refresh a cada 10 segundos</h1>
     </div>
     <p>-</p>
-    <iframe id="iframe" > <!--src="https://demo.tableau.com/t/LuizOliveira/views/demoTV/AcompanhamentodeResultados?:embed=y"> -->
+   
         <div style="text-align: center;">
             <div style="display: inline-block;">
                 <div id="vizContainer0" ></div>
             </div></div>
        
-    </iframe>
-
-    <script>
-        window.setInterval(function() {
-            reloadIFrame()
-        }, 30000);
-
-        function reloadIFrame() {
-            console.log('reloading..');
-            document.getElementById('iframe').contentWindow.location.reload();
-        }
-    </script>
+   
 </body>
 </html>
