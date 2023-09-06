@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Carrossel - HTML e CSS</title>
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animation.css">
+
+
+    
+
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.8.0.min.js"></script>
+
+    <script type="text/javascript">
+
+        window.addEventListener("load", mediaSizer);
+        //window.addEventListener("resize", mediaSizer);
+        // Listeners that will react when the page first loads or is resized.
+        // If any of these events take place the mediaSizer() function executes.
+
+        var vizList = [
+
+            "https://demo.tableau.com/t/LuizOliveira/views/3-DemoExemplo/DemoExemplo?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+            "https://demo.tableau.com/t/LuizOliveira/views/HUMANRESOURCES-HRExpensesDashboardBrasil_16650942031620/Cockpit?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+                    "https://demo.tableau.com/t/LuizOliveira/views/Healthcarerejection_16650942069890/AnlisedePlanos?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+                    "https://demo.tableau.com/t/LuizOliveira/views/HealthCareExecutiveKPIDashboard_16650942027890/ExecutiveKPIDashboard?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+                    "https://demo.tableau.com/t/LuizOliveira/views/3-DemoExemplo/DemoExemplo?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link"
+        ];
+        // Array of Tableau Server URLs for dashboard or sheet navigation.
+
+        var viz,
+        vizNav=0;
+            vizLen = vizList.length,
+            vizCount = 0,
+            devType;
+            x,
+            vizNav=0;
+        var options = {
+            device: devType,
+        };
+
+    function showDiv(myDIV) {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+        function mediaSizer() {
+            // Determines the correct viz layout according to screen sizes.
+            if (window.matchMedia("(max-width: 480px)").matches) {
+                //alert("I am a phone layout!");
+                devType = 'phone';
+                vWidth = 415;
+                vHeight = 950;
+                //options.device = 'phone';
+            } else if (window.matchMedia("(max-width: 980px)").matches) {
+                //alert("I am a tablet layout!");
+                devType = 'tablet';
+                vWidth = 980;
+                //options.device = 'tablet';
+            } else {
+                //alert("I am a desktop layout!");
+                devType = 'desktop';
+                vWidth = 1666;
+                vHeight = 900;
+                //options.device = 'desktop';
+            }
+           
+            console.log("launch0");
+
+            // setInterval(() => {
+            //     console.log("Refreshing...");
+            //     console.log("viz0");
+            //   var x = document.getElementById("vizcontainer0");
+            //  console.log("passou de x");
+        
+            //     viz.refreshDataAsync();
+            // }, 4000);
+
+            // setInterval(() => {
+            //     console.log("Refreshing...");
+            //     console.log("viz4");
+            //   var x = document.getElementById("vizcontainer4");
+            //  console.log("passou de x");
+        
+            //     viz.refreshDataAsync();
+            // }, 4000);
+            console.log("viz0");
+            launchViz(0);
+             viz.refreshDataAsync();
+            // console.log("viz1");
+            // launchViz(1);
+            // console.log("viz2");
+            // launchViz(2);
+            // console.log("viz3");
+            // launchViz(3);
+            // console.log("viz4");
+            // launchViz(4);
+
+            
+     
+       
+ 
+
+
+
+
+
+            // Launches the viz again with the new sizing at the current index of vizList.
+        }
+
+
+        function launchViz(vizNav) {
+            // JS object targeting a div in the html document. (vizNav) will pass navigation values to move back and forth across vizList.
+            console.log("launchviz")
+            
+            var vizDiv = document.getElementById("vizContainer"+vizNav),
+                // Will embed the visualization on a div with id="VizContainer"
+                options = {
+                    device: devType,
+                    width: vWidth,
+                    height: vHeight,
+                    hideTabs: true,
+                    hideToolbar: true,
+                    onFirstInteractive: function () {
+                        listenToMarksSelection();
+                    }
+                };
+
+
+            var vizURL = vizList[vizNav];
+            // Dynamic URL returning the string from vizList at index = vizNav (viz to be displayed).
+
+            try {
+                // Initializes the viz from the array with desired options. 
+                viz = new tableau.Viz(vizDiv, vizURL, options);
+                if (!viz) throw 'viz not initialized'
+            }
+            catch (err) {
+                alert(err);
+            }
+            finally {
+                console.log('whatever')
+                console.count('initViz')
+            }
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Efeito Carrossel de Dashboards para Unimed</h1>
+        </header>
+
+        <main class="main">
+
+            <section class="galery">
+                <div >
+                    
+
+
+                 
+                            <div class="unimed" id="vizContainer0" ></div>
+                            
+                            <!-- <div class="unimed" id="vizContainer1" ></div>
+                     
+                            <div class="unimed" id="vizContainer2"></div>
+                    
+                            <div class="unimed" id="vizContainer3"></div>
+                     
+                            <div class="unimed" id="vizContainer4" ></div> -->
+
+
+
+                    
+                </div>
+            </section>
+
+        </main>
+
+      
+    </div>
+    
+</body>
+</html>
