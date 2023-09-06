@@ -7,9 +7,9 @@
 
 .galery .divisoes {
     width: 500%;
-    animation-name: animacao;
+    /* animation-name: animacao;
     animation-duration: 60s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
 }
 
 .galery .divisoes .unimed {
